@@ -7,6 +7,7 @@ import { useRenderCounter } from "../../hooks/useRenderCounter";
 import { Colors } from "../../styles/colors";
 import { w } from "../../styles/scale";
 import { Props } from "./HomeScreen.props";
+import { styles } from "./HomeScreen.styles";
 
 const HomeScreen: FC<Props> = ({ route, navigation }) => {
     useRenderCounter('HomeScreen');

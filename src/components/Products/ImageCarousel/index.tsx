@@ -9,15 +9,18 @@ import { styles } from './ImageCarousel.styles'
 
 const ImageCarousel: FC<Props> = ({ hasBottomButton }) => {
     return (
-        <View style={styles.Wrapper}>
+        <View style={styles.wrapper}>
             <ScrollView horizontal >
-                <Image
-                    style={styles.Image}
-                    source={require('../../../assets/images/car1.png')}
-                />
-                <TouchableOpacity style={styles.ButtonLike}>
-                    <Icon name='HeartOutline' color={Colors.WHITE_SMOKE} size={w(20.7)} />
-                </TouchableOpacity>
+                <View style={styles.wrapperImage}>
+                    <Image
+                        style={styles.image}
+                        source={require('../../../assets/images/car1.png')}
+                    />
+                    {hasBottomButton && 
+                    <TouchableOpacity style={styles.buttonLike}>
+                        <Icon name='HeartOutline' color={Colors.WHITE_SMOKE} size={w(20.7)} />
+                    </TouchableOpacity>}
+                </View>
             </ScrollView>
         </View>
     )
