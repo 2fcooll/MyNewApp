@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     Wrapper: {
         display: "flex",
         alignItems: 'center',
-        position: 'relative'
+        // position: 'relative'
     },
     Image: {
         width: w(313.4),
@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'absolute',
-        width: w(45),
-        height: w(45),
+        // position: 'absolute',
+        width: w(51.75),
+        height: w(51.75),
         backgroundColor: Colors.MATTERHORN,
-        borderRadius: w(45/2),
+        borderRadius: w(51.75/2),
     }
 });
 
