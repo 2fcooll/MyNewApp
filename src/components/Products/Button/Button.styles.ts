@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         position: 'absolute',
         bottom: w(-51.75/2),
-        left: w(150),
+        left: w(172.5),
         width: w(51.75),
         height: w(51.75),
         backgroundColor: Colors.MATTERHORN,

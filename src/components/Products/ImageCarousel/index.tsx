@@ -8,8 +8,8 @@ import { Props } from './ImageCarousel.props'
 const ImageCarousel: FC<Props> = ({ hasBottomButton }) => {
     return (
         <View>
-            <List hasBottomButton={hasBottomButton} />
-            <Button activeOpacity={1} iconName="HeartOutline" />
+            <List horizontal={true}/>
+            {hasBottomButton && <Button activeOpacity={1} iconName="HeartOutline" />}
         </View>
     )
 }

@@ -4,8 +4,11 @@ import { Button } from '../Button';
 import {Props} from './List.props'
 import { styles } from './List.styles';
 
-const List: FC<Props> = ({hasBottomButton, ...props}) => {
+const List: FC<Props> = ({...props}) => {
     
+    console.log(props);
+    
+
     return (
         <View style={styles.wrapper}>
             <ScrollView {...props}>
