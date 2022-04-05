@@ -4,9 +4,9 @@ import { View } from 'react-native'
 const Tags = () => {
   return (
     <View>
-        
+
     </View>
   )
 }
 
-export default Tags
+export {Tags}
