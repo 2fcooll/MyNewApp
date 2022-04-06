@@ -4,6 +4,7 @@ import { Props } from "./Layout.props";
 import { styles } from "./Layout.styles";
 
 const Layout: FC<Props> = ({ children, containerStyle, contentContainerStyle }) => {
+    
     const cachedContainerStyle = useMemo(() => [styles.container, containerStyle], [containerStyle]);
     const cachedContentContainerStyle = useMemo(() => [styles.container, contentContainerStyle], [contentContainerStyle]);
 
