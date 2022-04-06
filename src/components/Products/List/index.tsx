@@ -3,12 +3,12 @@ import { ScrollView, View } from 'react-native';
 import { Props } from './List.props'
 import { styles } from './List.styles';
 
-const List: FC<Props> = ({ ...props }) => {
+const List: FC<Props> = ({children, ...props }) => {
 
     return (
         <View style={styles.wrapper}>
             <ScrollView {...props}>
-                {props.children}
+                {children}
             </ScrollView>
         </View>
     )

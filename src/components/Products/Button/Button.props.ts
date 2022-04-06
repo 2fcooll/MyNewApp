@@ -6,7 +6,7 @@ export interface Props extends TouchableOpacity {
     iconColor: string,
     iconSize: number
     activeOpacity: number,
-    containerStyle: StyleProp<ViewStyle>
+    containerStyle?: StyleProp<ViewStyle>
 }
 
 

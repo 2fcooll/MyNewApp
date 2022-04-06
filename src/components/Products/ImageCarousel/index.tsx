@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Image, ScrollView, View } from 'react-native'
+import { Image, View } from 'react-native'
 import { Colors } from '../../../styles/colors'
 import { Button } from '../Button'
 import { List } from '../List'
