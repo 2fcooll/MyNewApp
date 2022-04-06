@@ -8,30 +8,32 @@ import { styles } from './Tags.style'
 
 
 
-const Tags: FC<Props> = ({ hasPrice, horizontal }) => {
+const Tags: FC<Props> = ({
+    data,
+    hasPrice,
+    horizontal,
+    price,
+    time
+}) => {
+
     return (
         <View style={styles.wrapper}>
-            {!!horizontal ?
-                <List horizontal>
-                    <Tag content='nvidia gtx 1650' />
-                    <Tag content='intel i5' />
-                    {hasPrice && 
+            <List horizontal={horizontal}>
+                {data.map(tag =>
+                    <Tag content={tag.content} />
+                )}
+                {!!hasPrice && !!time && !horizontal ?
+                    <Price
+                        price={price}
+                        time={time}
+                    /> :
                     <Price
                         horizontal
-                        price="21 000 $"
                         activeOpacity={1}
-                    />}
-                </List> :
-                <List>
-                    <Tag title='Видеокарта' content='nvidia gtx 1650' />
-                    <Tag title='Процессор' content='intel i5' />
-                    {hasPrice && 
-                    <Price
-                        activeOpacity={1}
-                        time='Сегодня в 12:30'
-                        price="21 000 $" 
-                    />}
-                </List>}
+                        price={price}
+                    />
+                }
+            </List>
         </View>
     )
 }

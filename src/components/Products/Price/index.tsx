@@ -12,10 +12,10 @@ const Price:FC<Props> = ({
     price,
     time, 
     ...props }) => {
-    
+
     return (
         <View>
-            {!!horizontal ?
+            {horizontal ?
                 <Button {...props} containerStyle={styles.wrapperHorizontal}>
                     <Icon name='ArrowDownCircleOutline' color={Colors.MATTERHORN} size={16} />
                     <Text style={styles.textPriceHorizontal}>{price}</Text>
