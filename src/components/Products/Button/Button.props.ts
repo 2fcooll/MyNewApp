@@ -1,11 +1,10 @@
-import { StyleProp, TouchableOpacity, ViewStyle } from "react-native"
+import { StyleProp, TouchableOpacityProps, ViewStyle } from "react-native"
 import { IconNames } from "../../Icon/Icon.props";
 
-export interface Props extends TouchableOpacity {
+export interface Props extends TouchableOpacityProps {
     iconName: IconNames,
     iconColor: string,
     iconSize: number
-    activeOpacity: number,
     containerStyle?: StyleProp<ViewStyle>
 }
 
