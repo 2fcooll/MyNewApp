@@ -4,16 +4,16 @@ import { styles } from './Tag.style'
 import { Props } from './Tag.props'
 
 
-const Tag: FC<Props> = ({ innerText, title }) => {
+const Tag: FC<Props> = ({ content, title }) => {
 
   return (
     <View style={styles.wrapper}>
-      {title ?
+      {!!title ?
         <View style={styles.wrapperVertical}>
           <Text style={styles.innerTextVertical}>{title}</Text>  
-          <Text style={styles.innerTextVertical}>{innerText}</Text>
+          <Text style={styles.innerTextVertical}>{content}</Text>
         </View> :
-        <Text style={styles.innerTextHorizontal}>{innerText}</Text>}
+        <Text style={styles.innerTextHorizontal}>{content}</Text>}
     </View>
   )
 }

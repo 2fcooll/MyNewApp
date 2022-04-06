@@ -7,12 +7,13 @@ const Button: FC<Props> = ({
   iconName,
   iconColor, 
   iconSize, 
-  containerStyle, 
+  containerStyle,
+  children, 
   ...props }) => {
 
   return (
     <TouchableOpacity {...props} style={containerStyle}>
-      <Icon name={iconName} color={iconColor} size={iconSize} />
+      {children}
     </TouchableOpacity>
   )
 }

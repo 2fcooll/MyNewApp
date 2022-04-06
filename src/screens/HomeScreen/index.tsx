@@ -14,7 +14,7 @@ const HomeScreen: FC<Props> = ({ route, navigation }) => {
         <Layout>
             <View>
                 <ImageCarousel hasBottomButton={true}/>
-                <Tags hasPrice={true} horizontal={true} />
+                <Tags hasPrice={true} horizontal={false} />
             </View>
         </Layout>
     )

@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Image, View } from 'react-native'
 import { Colors } from '../../../styles/colors'
+import { Icon } from '../../Icon'
 import { Button } from '../Button'
 import { List } from '../List'
 import { Props } from './ImageCarousel.props'
@@ -21,12 +22,11 @@ const ImageCarousel: FC<Props> = ({ hasBottomButton }) => {
                 />
             </List>
             {hasBottomButton &&
-                <Button
-                    containerStyle={styles.buttonLike}
-                    activeOpacity={1}
-                    iconName="HeartOutline"
-                    iconColor={Colors.WHITE_SMOKE}
-                    iconSize={20.7} />
+                <Button 
+                containerStyle={styles.buttonLike}
+                activeOpacity={1}>
+                    <Icon name="HeartOutline" color={Colors.WHITE_SMOKE} size={20.7} />
+                </Button>
             }
         </View >
     )
