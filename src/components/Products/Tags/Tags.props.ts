@@ -1,12 +1,12 @@
 export type Props = {
     hasPrice: boolean
     horizontal: boolean
-    data: Array<Idata>,
+    data: Array<Itag>,
     price?: string,
     time?: string
 }
 
-export interface Idata {
+export interface Itag {
     title?: string;
     content: string;
 }

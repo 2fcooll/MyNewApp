@@ -23,9 +23,11 @@ const ImageCarousel: FC<Props> = ({ hasBottomButton }) => {
             </List>
             {hasBottomButton &&
                 <Button 
-                containerStyle={styles.buttonLike}
-                activeOpacity={1}>
-                    <Icon name="HeartOutline" color={Colors.WHITE_SMOKE} size={20.7} />
+                    containerStyle={styles.buttonLike}
+                    iconName="HeartOutline"
+                    iconColor={Colors.WHITE_SMOKE}
+                    iconSize={20.7}
+                    >
                 </Button>
             }
         </View >

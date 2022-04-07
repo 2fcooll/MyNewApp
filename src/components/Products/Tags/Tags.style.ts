@@ -3,7 +3,7 @@ import { w } from "../../../styles/scale";
 
 const styles = StyleSheet.create({
     wrapper: {
-        marginTop: w(28.75),
+      
     },
 });
 

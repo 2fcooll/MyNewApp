@@ -20,19 +20,17 @@ const Tags: FC<Props> = ({
         <View style={styles.wrapper}>
             <List horizontal={horizontal}>
                 {data.map(tag =>
-                    <Tag content={tag.content} />
+                    <Tag 
+                        content={tag.content} 
+                        title={tag.title} 
+                        horizontal={horizontal}/>
                 )}
-                {!!hasPrice && !!time && !horizontal ?
+                {hasPrice &&
                     <Price
+                        horizontal={horizontal}
                         price={price}
                         time={time}
-                    /> :
-                    <Price
-                        horizontal
-                        activeOpacity={1}
-                        price={price}
-                    />
-                }
+                    /> }
             </List>
         </View>
     )

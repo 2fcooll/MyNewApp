@@ -1,19 +1,20 @@
 import React, { FC } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, Text } from 'react-native'
 import { Props } from './Button.props'
 import { Icon } from '../../Icon'
 
 const Button: FC<Props> = ({ 
   iconName,
   iconColor, 
-  iconSize, 
+  iconSize,
+  price, 
   containerStyle,
-  children, 
-  ...props }) => {
+  containerStyleText}) => {
 
   return (
-    <TouchableOpacity {...props} style={containerStyle}>
-      {children}
+    <TouchableOpacity activeOpacity={1} style={containerStyle}>
+      <Icon name={iconName} color={iconColor} size={iconSize} />
+      {price && <Text style={containerStyleText}>{price}</Text>}
     </TouchableOpacity>
   )
 }

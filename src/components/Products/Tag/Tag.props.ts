@@ -1,4 +1,5 @@
 export type Props = {
     content: string,
-    title?: string
+    title?: string,
+    horizontal: boolean
 }

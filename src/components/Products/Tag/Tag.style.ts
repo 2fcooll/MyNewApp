@@ -15,13 +15,13 @@ const styles = StyleSheet.create({
     },
     textContent: {
         fontSize: w(16.1),
-        lineHeight: w(18.87),
+        fontWeight: "600",
         color: Colors.WHITE_SMOKE,
         fontFamily: Fonts.Roboto_Bold
     },
     textTitle: {
         fontSize: w(18),
-        lineHeight: w(19),
+        fontWeight: "700",
         color: Colors.WHITE_SMOKE,
         fontFamily: Fonts.Roboto_Bold
     }
