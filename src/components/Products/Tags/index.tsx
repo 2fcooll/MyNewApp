@@ -31,7 +31,7 @@ const Tags: FC<Props> = ({
             <List horizontal={horizontal}>
                 {data.map(tag =>
                     <Tag
-                        backgroundColor={tag.backgroundColor}
+                        containerStyle ={tag.backgroundColor}
                         content={tag.content}
                         title={tag.title}
                         horizontal={horizontal} />
