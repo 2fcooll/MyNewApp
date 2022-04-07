@@ -22,8 +22,6 @@ const Price:FC<Props> = ({
                     containerStyleText={styles.textPriceHorizontal}
                     price={price}
                 >
-                    {/* <Icon name='ArrowDownCircleOutline' color={Colors.MATTERHORN} size={16} /> */}
-                    {/* <Text style={styles.textPriceHorizontal}>{price}</Text> */}
                 </Button> :
                 <View style={styles.wrapperVertical}>
                     <Text style={styles.textTimeVertical} >{time}</Text>
