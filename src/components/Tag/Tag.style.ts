@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     wrapper: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        height: w(34.5),
         paddingHorizontal: w(12.65),
         paddingVertical: w(8.05),
         backgroundColor: Colors.DIM_GRAY,
@@ -21,7 +20,7 @@ const styles = StyleSheet.create({
     },
     textTitle: {
         fontSize: w(18),
-        fontWeight: "700",
+        fontWeight: "600",
         color: Colors.WHITE_SMOKE,
         fontFamily: Fonts.Roboto_Bold
     }

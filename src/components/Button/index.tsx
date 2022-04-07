@@ -14,7 +14,7 @@ const Button: FC<Props> = ({
   return (
     <TouchableOpacity activeOpacity={1} style={containerStyle}>
       <Icon name={iconName} color={iconColor} size={iconSize} />
-      {innerText && <Text style={containerStyleText}>{innerText}</Text>}
+      {!!innerText && <Text style={containerStyleText}>{innerText}</Text>}
     </TouchableOpacity>
   )
 }

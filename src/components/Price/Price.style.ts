@@ -30,18 +30,21 @@ const styles = StyleSheet.create({
     fontSize: w(16.1),
     lineHeight: w(18.87),
     fontFamily: Fonts.Roboto_Bold,
+    fontWeight: "600",
   },
 
   textTimeVertical: {
     fontSize: w(16),
     lineHeight: w(18.75),
     fontFamily: Fonts.Roboto_Bold,
+    fontWeight: "700",
   },
 
   textPriceVertical: {
     fontSize: w(20),
     lineHeight: w(21.44),
     fontFamily: Fonts.Roboto_Bold,
+    fontWeight: "700",
   },
 });
 
