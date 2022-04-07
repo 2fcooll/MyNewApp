@@ -10,7 +10,10 @@ const Tag: FC<Props> = ({ content, title, horizontal, backgroundColor }) => {
   
 
   return (
-    <View style={[styles.wrapper, {backgroundColor: `${backgroundColor}`} ]}>
+    <View 
+    style={horizontal ? 
+    styles.wrapper : 
+    [styles.wrapper, {backgroundColor: `${backgroundColor}`}]}>
       {!horizontal && <Text style={styles.textTitle}>{title}</Text>} 
       <Text style={styles.textContent}>{content}</Text>
     </View>

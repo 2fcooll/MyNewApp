@@ -17,10 +17,12 @@ const Tags: FC<Props> = ({
     time
 }) => {
 
-    for(let i = 0; i < data.length; i++) {
-        let num = i % 2
-        if(!num) {
-            data[i].backgroundColor = Colors.DIM_GRAY
+    if(!horizontal) {
+        for(let i = 0; i < data.length; i++) {
+            let num = i % 2
+            if(!num) {
+                data[i].backgroundColor = Colors.DIM_GRAY
+            }
         }
     }
 
