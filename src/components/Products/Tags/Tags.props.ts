@@ -9,4 +9,5 @@ export type Props = {
 export interface Itag {
     title?: string;
     content: string;
+    backgroundColor?: string
 }

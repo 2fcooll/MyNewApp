@@ -5,6 +5,9 @@ const styles = StyleSheet.create({
     wrapper: {
       
     },
+    styleTag: {
+        backgroundColor: 'none'
+    }
 });
 
 export { styles };

@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
 
   textTimeVertical: {
     fontSize: w(16),
-    lineHeight: w(18.75),
     fontFamily: Fonts.Roboto_Bold,
     fontWeight: "700",
   },

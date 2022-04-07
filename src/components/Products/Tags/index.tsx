@@ -5,6 +5,7 @@ import { List } from '../../List'
 import { Tag } from '../../Tag'
 import { Props } from './Tags.props'
 import { styles } from './Tags.style'
+import { Colors } from '../../../styles/colors'
 
 
 
@@ -16,21 +17,29 @@ const Tags: FC<Props> = ({
     time
 }) => {
 
+    for(let i = 0; i < data.length; i++) {
+        let num = i % 2
+        if(!num) {
+            data[i].backgroundColor = Colors.DIM_GRAY
+        }
+    }
+
     return (
         <View style={styles.wrapper}>
             <List horizontal={horizontal}>
                 {data.map(tag =>
-                    <Tag 
-                        content={tag.content} 
-                        title={tag.title} 
-                        horizontal={horizontal}/>
+                    <Tag
+                        backgroundColor={tag.backgroundColor}
+                        content={tag.content}
+                        title={tag.title}
+                        horizontal={horizontal} />
                 )}
                 {hasPrice &&
                     <Price
                         horizontal={horizontal}
                         price={price}
                         time={time}
-                    /> }
+                    />}
             </List>
         </View>
     )

@@ -1,5 +1,6 @@
 export type Props = {
     content: string,
     title?: string,
-    horizontal: boolean
+    horizontal: boolean,
+    backgroundColor?: string,
 }

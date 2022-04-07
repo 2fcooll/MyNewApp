@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: w(12.65),
         paddingVertical: w(8.05),
-        backgroundColor: Colors.DIM_GRAY,
         borderRadius: w(11.5),
     },
     textContent: {
