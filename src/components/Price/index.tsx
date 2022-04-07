@@ -20,7 +20,7 @@ const Price:FC<Props> = ({
                     iconColor={Colors.MATTERHORN} 
                     iconSize={16}
                     containerStyleText={styles.textPriceHorizontal}
-                    price={price}
+                    innerText={price}
                 >
                 </Button> :
                 <View style={styles.wrapperVertical}>
