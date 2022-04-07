@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import { View, Text } from 'react-native'
-import { Colors } from '../../../styles/colors'
-import { Icon } from '../../Icon'
+import { Colors } from '../../styles/colors'
 import { Button } from '../Button'
 import { Props } from './Price.props'
 import { styles } from './Price.style'
@@ -11,10 +10,7 @@ const Price:FC<Props> = ({
     horizontal,
     price,
     time,}) => {
-
-        console.log(horizontal);
         
-
     return (
         <View>
             {horizontal ?

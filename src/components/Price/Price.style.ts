@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '../../../styles/colors';
-import {Fonts} from '../../../styles/fonts';
-import {w} from '../../../styles/scale';
+import {Colors} from '../../styles/colors';
+import {Fonts} from '../../styles/fonts';
+import {w} from '../../styles/scale';
 
 const styles = StyleSheet.create({
   wrapperHorizontal: {

@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { View } from 'react-native'
-import { Price } from '../Price'
-import { List } from '../List'
-import { Tag } from '../Tag'
+import { Price } from '../../Price'
+import { List } from '../../List'
+import { Tag } from '../../Tag'
 import { Props } from './Tags.props'
 import { styles } from './Tags.style'
 

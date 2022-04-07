@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { TouchableOpacity, Text } from 'react-native'
 import { Props } from './Button.props'
-import { Icon } from '../../Icon'
+import { Icon } from '../Icon'
 
 const Button: FC<Props> = ({ 
   iconName,

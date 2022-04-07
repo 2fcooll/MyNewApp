@@ -1,5 +1,5 @@
 import { StyleProp, TextStyle, TouchableOpacityProps, ViewStyle } from "react-native"
-import { IconNames } from "../../Icon/Icon.props";
+import { IconNames } from "../Icon/Icon.props";
 
 export interface Props extends TouchableOpacityProps {
     iconName?: IconNames;
