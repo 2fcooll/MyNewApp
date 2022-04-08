@@ -17,9 +17,6 @@ const ImageCarousel: FC<Props> = ({ hasBottomButton }) => {
                 <Image
                     source={require('../../../assets/images/car1.png')}
                 />
-                <Image
-                    source={require('../../../assets/images/car1.png')}
-                />
             </List>
             {hasBottomButton &&
                 <Button 

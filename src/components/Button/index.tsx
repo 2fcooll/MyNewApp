@@ -11,10 +11,12 @@ const Button: FC<Props> = ({
   containerStyle,
   containerStyleText}) => {
 
+  const hasIcon = iconName && iconColor && iconSize;
+    
 
   return (
     <TouchableOpacity activeOpacity={1} style={containerStyle}>
-      <Icon name={iconName} color={iconColor} size={iconSize} />
+      {!!hasIcon && <Icon name={iconName} color={iconColor} size={iconSize} />}
       {!!innerText && <Text style={containerStyleText}>{innerText}</Text>}
     </TouchableOpacity>
   )

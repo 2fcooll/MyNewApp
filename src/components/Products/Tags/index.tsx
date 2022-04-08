@@ -17,7 +17,6 @@ const Tags: FC<Props> = ({
     time
 }) => {
 
-
     return (
         <View style={styles.wrapper}>
             <List horizontal={horizontal}>
@@ -29,8 +28,7 @@ const Tags: FC<Props> = ({
                     content={tag.content}
                     title={tag.title}
                     horizontal={horizontal} />
-                }
-                    
+                }   
                 )}
                 {hasPrice &&
                     <Price
