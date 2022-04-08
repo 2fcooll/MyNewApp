@@ -17,24 +17,20 @@ const Tags: FC<Props> = ({
     time
 }) => {
 
-    if(!horizontal) {
-        for(let i = 0; i < data.length; i++) {
-            let num = i % 2
-            if(!num) {
-                data[i].backgroundColor = Colors.DIM_GRAY
-            }
-        }
-    }
 
     return (
         <View style={styles.wrapper}>
             <List horizontal={horizontal}>
-                {data.map(tag =>
-                    <Tag
-                        containerStyle ={tag.backgroundColor}
-                        content={tag.content}
-                        title={tag.title}
-                        horizontal={horizontal} />
+                {data.map((tag, tagIndex) => {
+                    let even = tagIndex % 2;
+                    const containerStyle = !!even && !horizontal && {backgroundColor: Colors.MATTERHORN};
+                    return <Tag
+                    containerStyle = {containerStyle}
+                    content={tag.content}
+                    title={tag.title}
+                    horizontal={horizontal} />
+                }
+                    
                 )}
                 {hasPrice &&
                     <Price

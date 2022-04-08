@@ -7,9 +7,9 @@ const styles = StyleSheet.create({
     wrapper: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        backgroundColor: Colors.DIM_GRAY,
         paddingHorizontal: w(12.65),
         paddingVertical: w(8.05),
-        backgroundColor: Colors.DIM_GRAY,
         borderRadius: w(11.5),
     },
     textContent: {

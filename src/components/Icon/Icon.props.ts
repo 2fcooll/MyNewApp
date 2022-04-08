@@ -27,8 +27,8 @@ export type IconNames =
     'PhoneOutline';
 
 export type Props = {
-    name: IconNames,
-    color: string,
-    size: number,
+    name: IconNames | undefined,
+    color: string | undefined,
+    size: number | undefined,
     stroke?: string,
 };
