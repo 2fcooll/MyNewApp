@@ -1,6 +1,5 @@
 export type Props = {
     hasPrice: boolean
-    horizontal: boolean
     data: Array<Itag>,
     price?: string,
     time?: string
@@ -11,3 +10,8 @@ export interface Itag {
     content: string;
     backgroundColor?: string
 }
+
+export type IColumns = {
+    left: Array<any>,
+    right: Array<any>,
+};

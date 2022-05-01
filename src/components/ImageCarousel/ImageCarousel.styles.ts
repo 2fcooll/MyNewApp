@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
-import { Colors } from "../../../styles/colors";
-import { w } from "../../../styles/scale";
-
+import { SCREEN_WIDTH } from "../../constants/screenSizes";
+import { Colors } from "../../styles/colors";
+import { w } from "../../styles/scale";
 
 const styles = StyleSheet.create({
     buttonLike: {
@@ -15,7 +15,19 @@ const styles = StyleSheet.create({
         height: w(51.75),
         backgroundColor: Colors.MATTERHORN,
         borderRadius: w(51.75)
-    }
+    },
+    image: {
+        width: w(341),
+        height: w(341),
+        borderRadius: w(12),
+        marginLeft: w(8),
+    },
+    firstImage: {
+        marginLeft: 0,
+    },
+    contentContainer: {
+        paddingHorizontal: (SCREEN_WIDTH - w(341) ) / 2,
+    },
 });
 
 export { styles };

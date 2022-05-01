@@ -1,8 +1,10 @@
-import { StyleProp, ViewStyle } from "react-native";
+import { LayoutChangeEvent, StyleProp, TextStyle, ViewProps, ViewStyle } from "react-native";
 
-export type Props = {
-    content: string,
+export interface Props extends ViewProps {
+    content?: string,
     title?: string,
     horizontal: boolean,
     containerStyle?: StyleProp<ViewStyle> | undefined,
+    onTitleLayout?: (e: LayoutChangeEvent) => void,
+    titleStyle?: StyleProp<TextStyle>,
 }

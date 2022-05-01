@@ -6,31 +6,31 @@ import { Button } from '../Button'
 import { Props } from './Price.props'
 import { styles } from './Price.style'
 
-
-const Price:FC<Props> = ({ 
+const Price: FC<Props> = ({ 
     horizontal,
     price,
-    time,}) => {
-        
+    time,
+    containerStyle,
+}) => {
     return (
-        <View>
-            {horizontal ?
+        <View style={containerStyle}>
+            {horizontal ? (
                 <Button 
                     containerStyle={styles.wrapperHorizontal} 
                     iconName='ArrowDownCircleOutline' 
-                    iconColor={Colors.MATTERHORN} 
+                    iconColor={Colors.EMPEROR} 
                     iconSize={w(16)}
                     containerStyleText={styles.textPriceHorizontal}
                     innerText={price}
-                >
-                </Button> :
+                />
+            ) : (
                 <View style={styles.wrapperVertical}>
-                    <Text style={styles.textTimeVertical} >{time}</Text>
-                    <Text style={styles.textPriceVertical} >{price}</Text>
+                    <Text style={styles.textTimeVertical}>{time}</Text>
+                    <Text style={styles.textPriceVertical}>{price}</Text>
                 </View>
-            }
+            )}
         </View>
-    )
+    );
 }
 
 export { Price }
