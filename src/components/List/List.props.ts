@@ -1,6 +1,13 @@
-import { ScrollViewProps } from "react-native";
+import { ScrollViewProps, StyleProp, ViewStyle } from "react-native";
 
 
 export interface Props extends ScrollViewProps {
-    
+    containerStyle?: StyleProp<ViewStyle>,
 }
+
+export type IScrollToProps = { x?: number | undefined, y?: number | undefined, animated?: boolean | undefined };
+
+export type IListHandles = {
+    scrollTo: (props: IScrollToProps) => void,
+};
+

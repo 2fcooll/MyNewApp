@@ -24,7 +24,8 @@ export type IconNames =
     'LocationOutline' |
     'PlusSquareOutline' |
     'DangerCircleOutline' |
-    'PhoneOutline';
+    'PhoneOutline' |
+    'Heart';
 
 export type Props = {
     name: IconNames,
