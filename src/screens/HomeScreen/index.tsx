@@ -1,12 +1,12 @@
 import React, { FC, useCallback } from "react";
-import { Layout } from "../../components/Layout";
 import { useRenderCounter } from "../../hooks/useRenderCounter";
 import { Props } from "./HomeScreen.props";
 import { styles } from "./HomeScreen.styles";
 import { Product } from "../../components/Product";
-import { FlatList } from "react-native";
+import { View } from "react-native";
 import { IProduct } from "../../components/Product/Product.props";
 import { SCREEN_NAMES } from "../../constants/screenNames";
+import { CustomFlatList } from "../../components/CustomFlatList";
 
 let data = [
     {
@@ -40,12 +40,14 @@ const HomeScreen: FC<Props> = ({ route, navigation }) => {
         navigation.navigate(SCREEN_NAMES.ITEM_SCREEN);
     }, []);
 
-    const renderProduct = useCallback(({ item }) => {
+    const renderProduct = useCallback(({ item, index }) => {
+        const containerStyle = [styles.productContainer, index === 0 && styles.firstProductContainer];
+
         return (
             <Product 
                 key={item.time}
                 data={item} 
-                containerStyle={styles.productContainer} 
+                containerStyle={containerStyle} 
                 onPress={onProductPress}
             />
         );
@@ -56,13 +58,14 @@ const HomeScreen: FC<Props> = ({ route, navigation }) => {
     }, []);
 
     return (
-        <Layout containerStyle={styles.wrapper}>
-            <FlatList 
+        <View style={styles.wrapper}>
+            <CustomFlatList 
                 data={data}
                 renderItem={renderProduct}
                 keyExtractor={keyExtractor}
+                isTabBar={true}
             />
-        </Layout>
+        </View>
     );
 };
 

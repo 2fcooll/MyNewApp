@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { Button } from "../../components/Button";
 import { ImageCarousel } from "../../components/ImageCarousel";
 import { Layout } from "../../components/Layout";
+import { List } from "../../components/List";
 import { VerticalTags } from "../../components/VerticalTags";
 import { useRenderCounter } from "../../hooks/useRenderCounter";
 import { Colors } from "../../styles/colors";
@@ -21,29 +22,31 @@ const ItemScreen: FC<Props> = ({ route, navigation }) => {
     useRenderCounter('ItemScreen');
 
     return (
-        <Layout containerStyle={styles.container}>
-            <ImageCarousel 
-                hasBottomButton={true}
-                images={[require('../../assets/images/car1.png'), require('../../assets/images/car1.png')]}
-            />
-            <View style={styles.productDetails}>
-                <Text style={styles.city}>Донецк</Text>
-                <Button 
-                    containerStyle={styles.phoneNumberContainer}
-                    containerStyleText={styles.phoneNumber}
-                    innerText='+ (380) 714957885'
-                    rightIconName='CopyOutline'
-                    rightIconColor={Colors.WHITE}
-                    rightIconSize={w(20)}
+        <View style={styles.container}>
+            <List isTabBar={true} containerStyle={styles.content}>
+                <ImageCarousel 
+                    hasBottomButton={true}
+                    images={[require('../../assets/images/car1.png'), require('../../assets/images/car1.png')]}
                 />
-            </View>
-            <VerticalTags 
-                data={data}
-                hasPrice={true}
-                price='12 000 $'
-                time='Сегодня в 12:15'
-            />
-        </Layout>
+                <View style={styles.productDetails}>
+                    <Text style={styles.city}>Донецк</Text>
+                    <Button 
+                        containerStyle={styles.phoneNumberContainer}
+                        containerStyleText={styles.phoneNumber}
+                        innerText='+ (380) 714957885'
+                        rightIconName='CopyOutline'
+                        rightIconColor={Colors.WHITE}
+                        rightIconSize={w(20)}
+                    />
+                </View>
+                <VerticalTags 
+                    data={data}
+                    hasPrice={true}
+                    price='12 000 $'
+                    time='Сегодня в 12:15'
+                />
+            </List>
+        </View>
     );
 };
 

@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
   productContainer: {
     marginTop: w(46),
   },
+  firstProductContainer: {
+    marginTop: 0,
+  },
 });
 
 export { styles };

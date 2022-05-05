@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
+    content: {
+        flex: 1,
+    }
 });
 
 export { styles };

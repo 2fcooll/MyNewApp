@@ -15,4 +15,7 @@ export const COMPONENT_SIZES = {
             },
         },
     },
+    TAB_BAR: {
+        BOTTOM_OFFSET: w(8),
+    },
 };
