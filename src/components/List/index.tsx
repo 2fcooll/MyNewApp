@@ -7,8 +7,11 @@ import { IListHandles, IScrollToProps, Props } from './List.props'
 import { styles } from './List.styles';
 
 const List: ForwardRefRenderFunction<IListHandles, Props> = ({children, containerStyle, isTabBar, ...props }: Props, ref: ForwardedRef<any>) => {
-    const cachedContainerStyles = useMemo(() => [styles.wrapper, containerStyle], [containerStyle]);
+    const tabBarHeight = useBottomTabBarHeight();
     const listRef = useRef<ScrollView>(null);
+
+    const cachedContainerStyles = useMemo(() => [styles.wrapper, containerStyle], [containerStyle]);
+    const contentContainerStyle = useMemo(() => ({ paddingBottom: isTabBar ? tabBarHeight + COMPONENT_SIZES.TAB_BAR.BOTTOM_OFFSET + w(20) : 0 }), [isTabBar]);
 
     useImperativeHandle(ref, () => ({
         scrollTo(props: IScrollToProps) {
@@ -16,13 +19,9 @@ const List: ForwardRefRenderFunction<IListHandles, Props> = ({children, containe
         },
     }));
 
-    const tabBarHeight = useBottomTabBarHeight();
-
-    const contentInset = useMemo(() => ({ bottom: isTabBar ? tabBarHeight + COMPONENT_SIZES.TAB_BAR.BOTTOM_OFFSET + w(20) : 0 }), [isTabBar]);
-
     return (
         <View style={cachedContainerStyles}>
-            <ScrollView contentInset={contentInset} ref={listRef} {...props}>
+            <ScrollView contentContainerStyle={contentContainerStyle} ref={listRef} {...props}>
                 {children}
             </ScrollView>
         </View>

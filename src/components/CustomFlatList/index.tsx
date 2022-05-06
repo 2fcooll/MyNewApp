@@ -10,11 +10,11 @@ const CustomFlatList: FC<Props> = ({ isTabBar, ...props }) => {
 
     const tabBarHeight = useBottomTabBarHeight();
 
-    const contentInset = useMemo(() => ({ bottom: isTabBar ? tabBarHeight + COMPONENT_SIZES.TAB_BAR.BOTTOM_OFFSET + w(20) : 0 }), [isTabBar]);
+    const contentContainerStyle = useMemo(() => ({ paddingBottom: isTabBar ? tabBarHeight + COMPONENT_SIZES.TAB_BAR.BOTTOM_OFFSET + w(20) : 0 }), [isTabBar]);
 
     return (
         <View>
-            <FlatList {...props} contentInset={contentInset} />
+            <FlatList {...props} contentContainerStyle={contentContainerStyle} />
         </View>
     );
 };

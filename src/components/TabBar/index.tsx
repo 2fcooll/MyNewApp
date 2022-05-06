@@ -14,17 +14,17 @@ const TabBar: FC<Props> = () => {
             <Button 
                 iconName='HeartOutline'
                 iconColor={Colors.WHITE}
-                iconSize={w(21)}
+                iconSize={w(22)}
             />
             <Button 
                 iconName='FilterOutline'
                 iconColor={Colors.WHITE}
-                iconSize={w(21)}
+                iconSize={w(22)}
             />
             <Button 
                 iconName='ProfileOutline'
                 iconColor={Colors.WHITE}
-                iconSize={w(21)}
+                iconSize={w(22)}
             />
         </View>
     );
