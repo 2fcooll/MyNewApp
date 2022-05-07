@@ -11,4 +11,6 @@ export const Colors = {
     ORANGE: '#FFBF1A',
     GOLDEN_BROWN: '#8F6C12',
     EMPEROR: '#505050',
+    OLD_SILVER: '#828282',
+    SONIC_SILVER: '#797676',
 };

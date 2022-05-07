@@ -6,12 +6,17 @@ import { HomeScreen } from "../screens/HomeScreen";
 import { ItemCreationScreen } from "../screens/ItemCreationScreen";
 import { ItemScreen } from "../screens/ItemScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
-import React from "react";
+import React, { useEffect } from "react";
 import { RootStackParamList } from "./RootStack.props";
 import { screenAnimation } from "../constants/animaions";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator, useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { TabBar } from "../components/TabBar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { LoginBottomSheet } from "../components/LoginBottomSheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
+import { setTabBarHeight } from "../store/slices/navigationState";
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -26,6 +31,13 @@ const screenOptions = {
 };
 
 const MainStack = () => {
+    const dispatch = useDispatch();
+    const tabBarHeight = useBottomTabBarHeight();
+
+    useEffect(() => {
+       dispatch(setTabBarHeight({ tabBarHeight }));
+    }, []);
+
     return (
         <Stack.Navigator initialRouteName={SCREEN_NAMES.HOME_SCREEN}>
             <Stack.Screen 
@@ -67,14 +79,23 @@ const tabScreenOptions = { headerShown: false };
 
 const RootNavigator = () => {
     return (
-        <NavigationContainer>
+        <GestureHandlerRootView style={styles.rootView}>
             <SafeAreaProvider>
-                <Tab.Navigator tabBar={renderTabBar} screenOptions={tabScreenOptions}>
-                    <Tab.Screen name={SCREEN_NAMES.HOME_STACK} component={MainStack} />
-                </Tab.Navigator>
+                <NavigationContainer>
+                        <Tab.Navigator tabBar={renderTabBar} screenOptions={tabScreenOptions}>
+                            <Tab.Screen name={SCREEN_NAMES.HOME_STACK} component={MainStack} />
+                        </Tab.Navigator>
+                        <LoginBottomSheet />
+                </NavigationContainer>
             </SafeAreaProvider>
-        </NavigationContainer>
+        </GestureHandlerRootView>
     );
 };
+
+const styles = StyleSheet.create({
+    rootView: {
+        flex: 1 
+    },
+});
 
 export { RootNavigator };

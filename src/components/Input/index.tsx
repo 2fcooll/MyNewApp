@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import React, { FC, useMemo } from "react";
 import { TextInput, View } from "react-native";
 import { Button } from "../Button";
 import { Props } from "./Input.props";
@@ -22,22 +22,26 @@ const Input: FC<Props> = ({
 
     return (
         <View style={cachedContainerStyle}>
-            <Button 
-                iconColor={leftIconColor}
-                iconName={leftIconName}
-                iconSize={leftIconSize}
-                onPress={onLeftIconPress}
-            />
+            {!!leftIconName && (
+                <Button 
+                    iconColor={leftIconColor}
+                    iconName={leftIconName}
+                    iconSize={leftIconSize}
+                    onPress={onLeftIconPress}
+                />
+            )}
             <TextInput 
                 style={cachedInputStyle} 
                 {...props} 
             />
-            <Button 
-                iconColor={rightIconColor}
-                iconName={rightIconName}
-                iconSize={rightIconSize}
-                onPress={onRightIconPress}
-            />
+            {!!rightIconName && (
+                <Button 
+                    iconColor={rightIconColor}
+                    iconName={rightIconName}
+                    iconSize={rightIconSize}
+                    onPress={onRightIconPress}
+                />
+            )}
         </View>
     );
 };
