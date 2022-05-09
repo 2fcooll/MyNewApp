@@ -1,4 +1,6 @@
-export type Props = {};
+export type Props = {
+    onClose?: () => void,
+};
 
 export interface ITabBarHandles {
     openTabBar: () => void,
