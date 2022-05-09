@@ -1,4 +1,4 @@
-import { Easing } from 'react-native';
+import { Easing } from 'react-native-reanimated';
 import { TransitionSpec } from '@react-navigation/stack/lib/typescript/src/types';
 
 export const baseInOutAnimation = {

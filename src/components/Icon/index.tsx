@@ -31,6 +31,7 @@ const ExportedIcons = {
     PlusSquareOutline: require('../../assets/icons/PlusSquareOutline.svg').default,
     DangerCircleOutline: require('../../assets/icons/DangerCircleOutline.svg').default,
     PhoneOutline: require('../../assets/icons/PhoneOutline.svg').default,
+    ArrowLeftCircleOutline: require('../../assets/icons/ArrowLeftCircleOutline.svg').default,
 };
 
 const Icon: FC<Props> = ({ name, color, size, stroke }) => {
