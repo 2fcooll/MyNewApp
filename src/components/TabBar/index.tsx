@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useCallback, useImperativeHandle, useMemo } from "react";
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useCallback, useContext, useImperativeHandle, useMemo } from "react";
 import { COMPONENT_SIZES } from "../../constants/componentSizes";
 import { useAnimation } from "../../hooks/useAnimation";
 import { Colors } from "../../styles/colors";
@@ -8,9 +8,11 @@ import { ITabBarHandles, Props } from './TabBar.props';
 import { styles } from "./TabBar.styles";
 import Animated from "react-native-reanimated";
 import { useLayout } from "../../hooks/useLayout";
+import { BottomSheetContext } from "../../contexts/BottomSheet";
 
-const TabBar: ForwardRefRenderFunction<ITabBarHandles, Props> = ({ onClose }: Props, ref: ForwardedRef<any>) => {
+const TabBar: ForwardRefRenderFunction<ITabBarHandles, Props> = ({}: Props, ref: ForwardedRef<any>) => {
     const [animatedValue, animatedStyle, startAnimation] = useAnimation('TabBarTranslateY');
+    const bottomSheetContext = useContext(BottomSheetContext);
     const [layout, setLayout] = useLayout();
 
     const openTabBar = useCallback(() => {
@@ -18,12 +20,22 @@ const TabBar: ForwardRefRenderFunction<ITabBarHandles, Props> = ({ onClose }: Pr
         startAnimation(VISIBLE_TAB_BAR_POSITION);
     }, []);
 
-    const closeTabBar = useCallback(() => {
+    const closeTabBar = useCallback((onClose) => () => {
         if (layout.current) {
             const HIDDEN_TAB_BAR_POSITION = layout.current.height + COMPONENT_SIZES.TAB_BAR.BOTTOM_OFFSET + w(20);
             startAnimation(HIDDEN_TAB_BAR_POSITION, onClose);
         }
     }, []);
+
+    const openLoginBottomSheet = useCallback(() => {
+        if (bottomSheetContext?.LoginBottomSheetRef) {
+            bottomSheetContext.LoginBottomSheetRef.current?.expand();
+        }
+    }, []);
+
+    const onPressProfile = useCallback(() => {
+        closeTabBar(openLoginBottomSheet)();
+    }, [closeTabBar, openLoginBottomSheet]);
 
     useImperativeHandle(ref, () => ({
         openTabBar,
@@ -48,7 +60,7 @@ const TabBar: ForwardRefRenderFunction<ITabBarHandles, Props> = ({ onClose }: Pr
                 iconName='ProfileOutline'
                 iconColor={Colors.WHITE}
                 iconSize={w(22)}
-                onPress={closeTabBar}
+                onPress={onPressProfile}
             />
         </Animated.View>
     );

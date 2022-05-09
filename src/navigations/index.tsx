@@ -73,9 +73,9 @@ const MainStack = () => {
     );
 };
 
-const renderTabBar = (tabBarRef: RefObject<any>, onClose: () => void) => (props: any) => {
+const renderTabBar = (tabBarRef: RefObject<any>) => (props: any) => {
     return (
-        <TabBar onClose={onClose} ref={tabBarRef} {...props} />
+        <TabBar ref={tabBarRef} {...props} />
     );
 };
 
@@ -93,18 +93,12 @@ const RootNavigator = () => {
         }
     }, []);
 
-    const onCloseTabBar = useCallback(() => {
-        if (LoginBottomSheetRef.current) {
-            LoginBottomSheetRef.current?.expand();
-        }
-    }, []);
-
     return (
         <GestureHandlerRootView style={styles.rootView}>
             <BottomSheetContextProvider value={bottomSheetContextProviderValue}>
                 <SafeAreaProvider>
                     <NavigationContainer>
-                            <Tab.Navigator tabBar={renderTabBar(tabBarRef, onCloseTabBar)} screenOptions={tabScreenOptions}>
+                            <Tab.Navigator tabBar={renderTabBar(tabBarRef)} screenOptions={tabScreenOptions}>
                                 <Tab.Screen name={SCREEN_NAMES.HOME_STACK} component={MainStack} />
                             </Tab.Navigator>
                             <LoginBottomSheet 
