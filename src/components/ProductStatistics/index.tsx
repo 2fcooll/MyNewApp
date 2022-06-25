@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, memo } from "react";
 import { Text, View } from "react-native";
 import { Colors } from "../../styles/colors";
 import { w } from "../../styles/scale";
@@ -6,13 +6,10 @@ import { Icon } from "../Icon";
 import { Props } from './ProductStatistics.props';
 import { styles } from "./ProductStatistics.styles";
 
-const ProductStatistics: FC<Props> = ({ containerStyle, ...props }) => {
-    const cachedTRowStyles = useMemo(() => [styles.tRow, styles.firstTRow], []);
-    const cachedContainerStyles = useMemo(() => [styles.container, containerStyle], [containerStyle]);
-
+const ProductStatisticsFunc: FC<Props> = ({ containerStyle, ...props }) => {
     return (
-        <View {...props} style={cachedContainerStyles}>
-            <View style={cachedTRowStyles}>
+        <View {...props} style={[styles.container, containerStyle]}>
+            <View style={[styles.tRow, styles.firstTRow]}>
                 <Icon name='Eye' color={Colors.WHITE_SMOKE} size={w(20)} />
                 <Text style={styles.title}>31</Text>
             </View>
@@ -28,4 +25,4 @@ const ProductStatistics: FC<Props> = ({ containerStyle, ...props }) => {
     );
 };
 
-export { ProductStatistics };
+export const ProductStatistics = memo(ProductStatisticsFunc);

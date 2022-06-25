@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useImperativeHandle, useMemo, useRef } from "react";
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, memo, useMemo } from "react";
 import { Props } from './LoginBottomSheet.props';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { Input } from "../Input";
@@ -10,18 +10,13 @@ import { w } from "../../styles/scale";
 import { COMPONENT_SIZES } from "../../constants/componentSizes";
 import { BottomSheetMethods } from "@gorhom/bottom-sheet/lib/typescript/types";
 
-const LoginBottomSheet: ForwardRefRenderFunction<BottomSheetMethods, Props> = ({ ...props }: Props, ref: ForwardedRef<any>) => {
+const LoginBottomSheetFunc: ForwardRefRenderFunction<BottomSheetMethods, Props> = ({ ...props }: Props, ref: ForwardedRef<any>) => {
     const snapPoints = useMemo(() => [w(250)], []);
-    const bottomSheetRef = useRef<BottomSheet>(null);
-
-    useImperativeHandle(ref, () => ({
-        ...bottomSheetRef.current,
-    }));
 
     return (
         <BottomSheet
             {...props}
-            ref={bottomSheetRef}
+            ref={ref}
             enablePanDownToClose
             snapPoints={snapPoints}
             bottomInset={COMPONENT_SIZES.TAB_BAR.BOTTOM_OFFSET}
@@ -57,5 +52,4 @@ const LoginBottomSheet: ForwardRefRenderFunction<BottomSheetMethods, Props> = ({
     );
 };
 
-const forwardLoginBottomSheet = forwardRef(LoginBottomSheet);
-export { forwardLoginBottomSheet as LoginBottomSheet };
+export const LoginBottomSheet = memo(forwardRef(LoginBottomSheetFunc));

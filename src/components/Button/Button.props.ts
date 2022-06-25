@@ -12,6 +12,7 @@ export interface Props extends TouchableOpacityProps {
     rightIconColor?: string,
     rightIconSize?: number,
     rightIconStrokeColor?: string,
+    rightIconContainerStyle?: StyleProp<ViewStyle>,
 };
 
 

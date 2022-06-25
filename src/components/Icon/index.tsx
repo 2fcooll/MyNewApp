@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, memo, useMemo } from "react";
 import { View } from "react-native";
 import { Props } from "./Icon.props";
 import { styles } from "./Icon.styles";
@@ -32,10 +32,12 @@ const ExportedIcons = {
     DangerCircleOutline: require('../../assets/icons/DangerCircleOutline.svg').default,
     PhoneOutline: require('../../assets/icons/PhoneOutline.svg').default,
     ArrowLeftCircleOutline: require('../../assets/icons/ArrowLeftCircleOutline.svg').default,
+    Delete: require('../../assets/icons/Delete.svg').default,
+    Close: require('../../assets/icons/Close.svg').default,
+    Search: require('../../assets/icons/Search.svg').default,
 };
 
-const Icon: FC<Props> = ({ name, color, size, stroke }) => {
-
+const IconFunc: FC<Props> = ({ name, color, size, stroke }) => {
     const IconComponent = useMemo(() => ExportedIcons[name], [name]);
 
     return (
@@ -45,4 +47,4 @@ const Icon: FC<Props> = ({ name, color, size, stroke }) => {
     );
 };
 
-export { Icon };
+export const Icon = memo(IconFunc);

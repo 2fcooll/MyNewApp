@@ -1,8 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { Text, View } from "react-native";
 import { Button } from "../../components/Button";
 import { ImageCarousel } from "../../components/ImageCarousel";
-import { Layout } from "../../components/Layout";
 import { List } from "../../components/List";
 import { VerticalTags } from "../../components/VerticalTags";
 import { useRenderCounter } from "../../hooks/useRenderCounter";
@@ -18,7 +17,7 @@ const data = [
     {title: "Память", content: "8GB ddr5" },
 ];
 
-const ItemScreen: FC<Props> = ({ route, navigation }) => {
+const ItemScreenFunc: FC<Props> = ({ route, navigation }) => {
     useRenderCounter('ItemScreen');
 
     return (
@@ -50,4 +49,4 @@ const ItemScreen: FC<Props> = ({ route, navigation }) => {
     );
 };
 
-export { ItemScreen };
+export const ItemScreen = memo(ItemScreenFunc);

@@ -12,4 +12,5 @@ export interface Props extends TextInputProps {
     onRightIconPress?: () => void,
     containerStyle?: StyleProp<ViewStyle>,
     inputStyle?: StyleProp<ViewStyle>,
+    rightIconContainerStyle?: StyleProp<ViewStyle>,
 };

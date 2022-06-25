@@ -1,10 +1,10 @@
-import React, { FC, useMemo } from "react";
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, memo } from "react";
 import { TextInput, View } from "react-native";
 import { Button } from "../Button";
 import { Props } from "./Input.props";
 import { styles } from "./Input.styles";
 
-const Input: FC<Props> = ({ 
+const InputFunc: ForwardRefRenderFunction<any, Props> = ({ 
     leftIconColor, 
     leftIconName, 
     leftIconSize,
@@ -15,13 +15,11 @@ const Input: FC<Props> = ({
     onRightIconPress,
     containerStyle,
     inputStyle,
+    rightIconContainerStyle,
     ...props 
-}) => {
-    const cachedContainerStyle = useMemo(() => [styles.container, containerStyle], [containerStyle]);
-    const cachedInputStyle = useMemo(() => [styles.input, inputStyle], [inputStyle]);
-
+}, ref: ForwardedRef<any>) => {
     return (
-        <View style={cachedContainerStyle}>
+        <View style={[styles.container, containerStyle]}>
             {!!leftIconName && (
                 <Button 
                     iconColor={leftIconColor}
@@ -31,11 +29,13 @@ const Input: FC<Props> = ({
                 />
             )}
             <TextInput 
-                style={cachedInputStyle} 
+                ref={ref}
+                style={[styles.input, inputStyle]} 
                 {...props} 
             />
             {!!rightIconName && (
                 <Button 
+                    containerStyle={rightIconContainerStyle}
                     iconColor={rightIconColor}
                     iconName={rightIconName}
                     iconSize={rightIconSize}
@@ -46,4 +46,4 @@ const Input: FC<Props> = ({
     );
 };
 
-export { Input };
+export const Input = memo(forwardRef(InputFunc));

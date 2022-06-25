@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, memo } from 'react'
 import { View, Text } from 'react-native'
 import { Colors } from '../../styles/colors'
 import { w } from '../../styles/scale'
@@ -6,7 +6,7 @@ import { Button } from '../Button'
 import { Props } from './Price.props'
 import { styles } from './Price.style'
 
-const Price: FC<Props> = ({ 
+const PriceFunc: FC<Props> = ({ 
     horizontal,
     price,
     time,
@@ -33,4 +33,4 @@ const Price: FC<Props> = ({
     );
 }
 
-export { Price }
+export const Price = memo(PriceFunc);

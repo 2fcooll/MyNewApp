@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from "react";
+import React, { FC, memo } from "react";
 import { useRenderCounter } from "../../hooks/useRenderCounter";
 import { Props } from "./HomeScreen.props";
 import { styles } from "./HomeScreen.styles";
@@ -33,14 +33,14 @@ let data = [
     },
 ];
 
-const HomeScreen: FC<Props> = ({ route, navigation }) => {
+const HomeScreenFunc: FC<Props> = ({ route, navigation }) => {
     useRenderCounter('HomeScreen');
 
-    const onProductPress = useCallback(() => {
+    const onProductPress = () => {
         navigation.navigate(SCREEN_NAMES.ITEM_SCREEN);
-    }, []);
+    }
 
-    const renderProduct = useCallback(({ item, index }) => {
+    const renderProduct = ({ item, index }) => {
         const containerStyle = [styles.productContainer, index === 0 && styles.firstProductContainer];
 
         return (
@@ -51,11 +51,11 @@ const HomeScreen: FC<Props> = ({ route, navigation }) => {
                 onPress={onProductPress}
             />
         );
-    }, []);
+    }
 
-    const keyExtractor = useCallback((item: IProduct) => {
+    const keyExtractor = (item: IProduct) => {
         return item.time;
-    }, []);
+    }
 
     return (
         <View style={styles.wrapper}>
@@ -69,4 +69,4 @@ const HomeScreen: FC<Props> = ({ route, navigation }) => {
     );
 };
 
-export { HomeScreen };
+export const HomeScreen = memo(HomeScreenFunc);

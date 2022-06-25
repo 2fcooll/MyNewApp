@@ -6,7 +6,7 @@ import { HomeScreen } from "../screens/HomeScreen";
 import { ItemCreationScreen } from "../screens/ItemCreationScreen";
 import { ItemScreen } from "../screens/ItemScreen";
 import { ProfileScreen } from "../screens/ProfileScreen";
-import React, { RefObject, useCallback, useEffect, useMemo, useRef } from "react";
+import React, { RefObject, useEffect, useMemo, useRef } from "react";
 import { RootStackParamList } from "./RootStack.props";
 import { screenAnimation } from "../constants/animaions";
 import { createBottomTabNavigator, useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
@@ -21,6 +21,7 @@ import { BottomSheetContextProvider } from "../contexts/BottomSheet";
 import { useSharedValue } from "react-native-reanimated";
 import { BottomSheetMethods } from "@gorhom/bottom-sheet/lib/typescript/types";
 import { ITabBarHandles } from "../components/TabBar/TabBar.props";
+import { FiltersBottomSheet } from "../components/FiltersBottomSheet";
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -47,7 +48,7 @@ const MainStack = () => {
             <Stack.Screen 
                 name={SCREEN_NAMES.FAVORITE_SCREEN}
                 component={FavoriteScreen}
-                options={screenOptions}
+                options={{ ...screenOptions,  cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS }}
             />
             <Stack.Screen 
                 name={SCREEN_NAMES.HOME_SCREEN}
@@ -84,29 +85,44 @@ const tabScreenOptions = { headerShown: false };
 const RootNavigator = () => {
     const LoginBottomSheetAnimatedPosition = useSharedValue(0);
     const LoginBottomSheetRef = useRef<BottomSheetMethods>(null);
-    const bottomSheetContextProviderValue = useMemo(() => ({ LoginBottomSheetAnimatedPosition, LoginBottomSheetRef }), []);
+    const FiltersBottomSheetRef = useRef<BottomSheetMethods>(null);
     const tabBarRef = useRef<ITabBarHandles>(null);
 
-    const onCloseLoginBottomSheet = useCallback(() => {
+    const bottomSheetContextProviderValue = useMemo(() => ({ 
+        LoginBottomSheetAnimatedPosition, 
+        LoginBottomSheetRef, 
+        FiltersBottomSheetRef 
+    }), []);
+
+    const onCloseBottomSheet = () => {
         if (tabBarRef.current) {
             tabBarRef.current.openTabBar();
         }
-    }, []);
+    };
 
     return (
         <GestureHandlerRootView style={styles.rootView}>
             <BottomSheetContextProvider value={bottomSheetContextProviderValue}>
                 <SafeAreaProvider>
                     <NavigationContainer>
-                            <Tab.Navigator tabBar={renderTabBar(tabBarRef)} screenOptions={tabScreenOptions}>
-                                <Tab.Screen name={SCREEN_NAMES.HOME_STACK} component={MainStack} />
+                            <Tab.Navigator 
+                                tabBar={renderTabBar(tabBarRef)} 
+                                screenOptions={tabScreenOptions}
+                            >
+                                <Tab.Screen 
+                                    name={SCREEN_NAMES.HOME_STACK} 
+                                    component={MainStack} 
+                                />
                             </Tab.Navigator>
                             <LoginBottomSheet 
-                                onClose={onCloseLoginBottomSheet} 
+                                onClose={onCloseBottomSheet} 
                                 animatedPosition={LoginBottomSheetAnimatedPosition} 
                                 ref={LoginBottomSheetRef} 
                             />
-                            {/* <FiltersBottomSheet /> */}
+                            <FiltersBottomSheet 
+                                onClose={onCloseBottomSheet}
+                                ref={FiltersBottomSheetRef}
+                            />
                     </NavigationContainer>
                 </SafeAreaProvider>
             </BottomSheetContextProvider>

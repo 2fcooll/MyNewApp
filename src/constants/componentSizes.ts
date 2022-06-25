@@ -18,4 +18,23 @@ export const COMPONENT_SIZES = {
     TAB_BAR: {
         BOTTOM_OFFSET: w(8),
     },
+    SEARCH: {
+        INPUT_CONTAINER: {
+            START_PADDING_VERTICAL: 0,
+            END_PADDING_VERTICAL: w(12),
+        },
+        INPUT: {
+            TRANSLATE_X: w(60),
+        },
+    },
+    CATEGORIES_SUMMARY: {
+        START_PADDING_TOP: w(14),
+        END_PADDING_TOP: w(22),
+
+        START_PADDING_BOTTOM: w(14),
+        END_PADDING_BOTTOM: w(22),
+
+        START_PADDING_LEFT: w(22),
+        END_PADDING_LEFT: w(27),
+    },
 };

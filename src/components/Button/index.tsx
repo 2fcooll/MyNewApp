@@ -1,9 +1,9 @@
-import React, { FC, useMemo } from 'react'
-import { TouchableOpacity, Text } from 'react-native'
+import React, { FC, memo, useMemo } from 'react'
+import { TouchableOpacity, Text, View } from 'react-native'
 import { Props } from './Button.props'
 import { Icon } from '../Icon'
 
-const Button: FC<Props> = ({ 
+const ButtonFunc: FC<Props> = ({ 
   iconName,
   iconColor, 
   iconSize,
@@ -13,9 +13,9 @@ const Button: FC<Props> = ({
   rightIconName,
   rightIconColor,
   rightIconSize,
+  rightIconContainerStyle,
   ...props
 }) => {
-
   const hasIcon = iconName && iconColor && iconSize;
   const hasRightIcon = rightIconName && rightIconColor && rightIconSize;
   const hitSlop = useMemo(() => ({ top: 10, bottom: 10, left: 10, right: 10 }), []);
@@ -24,9 +24,9 @@ const Button: FC<Props> = ({
     <TouchableOpacity hitSlop={hitSlop} {...props} activeOpacity={1} style={containerStyle}>
       {!!hasIcon && <Icon name={iconName} color={iconColor} size={iconSize} />}
       {!!innerText && <Text style={containerStyleText}>{innerText}</Text>}
-      {!!hasRightIcon && <Icon name={rightIconName} color={rightIconColor} size={rightIconSize} />}
+      {!!hasRightIcon && <View style={rightIconContainerStyle}><Icon name={rightIconName} color={rightIconColor} size={rightIconSize} /></View>}
     </TouchableOpacity>
   );
 }
 
-export { Button }
+export const Button = memo(ButtonFunc);

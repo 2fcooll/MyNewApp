@@ -1,20 +1,16 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, memo } from "react";
 import { SafeAreaView, View } from "react-native";
 import { Props } from "./Layout.props";
 import { styles } from "./Layout.styles";
 
-const Layout: FC<Props> = ({ children, containerStyle, contentContainerStyle }) => {
-    
-    const cachedContainerStyle = useMemo(() => [styles.container, containerStyle], [containerStyle]);
-    const cachedContentContainerStyle = useMemo(() => [styles.container, contentContainerStyle], [contentContainerStyle]);
-
+const LayoutFunc: FC<Props> = ({ children, containerStyle, contentContainerStyle }) => {
     return (
-        <SafeAreaView style={cachedContainerStyle}>
-            <View style={cachedContentContainerStyle}>
+        <SafeAreaView style={[styles.container, containerStyle]}>
+            <View style={[styles.container, contentContainerStyle]}>
                 {children}
             </View>
         </SafeAreaView>
     );
 };
 
-export { Layout };
+export const Layout = memo(LayoutFunc);

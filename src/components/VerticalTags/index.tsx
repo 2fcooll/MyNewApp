@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { View } from "react-native";
 import { Props } from './VerticalTags.props';
 import { styles } from "./VerticalTags.styles";
@@ -9,7 +9,7 @@ import { Colors } from "../../styles/colors";
 import { w } from "../../styles/scale";
 import { Tag } from "../Tag";
 
-const VerticalTags: FC<Props> = ({
+const VerticalTagsFunc: FC<Props> = ({
     data,
     hasPrice,
     price,
@@ -57,4 +57,4 @@ const VerticalTags: FC<Props> = ({
     );
 };
 
-export { VerticalTags };
+export const VerticalTags = memo(VerticalTagsFunc);

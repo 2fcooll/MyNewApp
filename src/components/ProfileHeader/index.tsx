@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC, memo, useMemo } from "react";
 import { Image, Text, View } from "react-native";
 import { Colors } from "../../styles/colors";
 import { w } from "../../styles/scale";
@@ -6,7 +6,7 @@ import { Icon } from "../Icon";
 import { Props } from "./ProfileHeader.props";
 import { styles } from "./ProfileHeader.styles";
 
-const ProfileHeader: FC<Props> = () => {
+const ProfileHeaderFunc: FC<Props> = () => {
     const imageSource = useMemo(() => ({ uri: '' }), []);
     
     return (
@@ -24,4 +24,4 @@ const ProfileHeader: FC<Props> = () => {
     );
 };
 
-export { ProfileHeader };
+export const ProfileHeader = memo(ProfileHeaderFunc);

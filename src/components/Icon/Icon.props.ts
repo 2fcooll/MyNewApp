@@ -26,7 +26,10 @@ export type IconNames =
     'DangerCircleOutline' |
     'PhoneOutline' |
     'Heart' |
-    'ArrowLeftCircleOutline';
+    'ArrowLeftCircleOutline' |
+    'Delete' | 
+    'Close' |
+    'Search';
 
 export type Props = {
     name: IconNames,

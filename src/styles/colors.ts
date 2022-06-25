@@ -13,4 +13,7 @@ export const Colors = {
     EMPEROR: '#505050',
     OLD_SILVER: '#828282',
     SONIC_SILVER: '#797676',
+    BURLYWOOD: '#DEB98E',
+    GRAY_X11: '#BCBCBC',
+    SILVER_CHALICE: '#ADADAD',
 };

@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, useCallback, useContext, useImperativeHandle, useMemo } from "react";
+import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction, memo, useContext, useImperativeHandle } from "react";
 import { COMPONENT_SIZES } from "../../constants/componentSizes";
 import { useAnimation } from "../../hooks/useAnimation";
 import { Colors } from "../../styles/colors";
@@ -9,62 +9,76 @@ import { styles } from "./TabBar.styles";
 import Animated from "react-native-reanimated";
 import { useLayout } from "../../hooks/useLayout";
 import { BottomSheetContext } from "../../contexts/BottomSheet";
+import { useNavigation } from "@react-navigation/core";
+import { SCREEN_NAMES } from "../../constants/screenNames";
+import { RootStackParamList } from "../../navigations/RootStack.props";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-const TabBar: ForwardRefRenderFunction<ITabBarHandles, Props> = ({}: Props, ref: ForwardedRef<any>) => {
+const TabBarFunc: ForwardRefRenderFunction<ITabBarHandles, Props> = ({}: Props, ref: ForwardedRef<any>) => {
     const [animatedValue, animatedStyle, startAnimation] = useAnimation('TabBarTranslateY');
-    const bottomSheetContext = useContext(BottomSheetContext);
     const [layout, setLayout] = useLayout();
+    const bottomSheetContext = useContext(BottomSheetContext);
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+    const VISIBLE_TAB_BAR_POSITION = 0;
 
-    const openTabBar = useCallback(() => {
-        const VISIBLE_TAB_BAR_POSITION = 0;
+    const openTabBar = () => {
         startAnimation(VISIBLE_TAB_BAR_POSITION);
-    }, []);
+    };
 
-    const closeTabBar = useCallback((onClose) => () => {
-        if (layout.current) {
+    const closeTabBar = (onClose: any) => () => {
+        if (layout.current?.height) {
             const HIDDEN_TAB_BAR_POSITION = layout.current.height + COMPONENT_SIZES.TAB_BAR.BOTTOM_OFFSET + w(20);
             startAnimation(HIDDEN_TAB_BAR_POSITION, onClose);
         }
-    }, []);
+    };
 
-    const openLoginBottomSheet = useCallback(() => {
-        if (bottomSheetContext?.LoginBottomSheetRef) {
-            bottomSheetContext.LoginBottomSheetRef.current?.expand();
-        }
-    }, []);
+    const openLoginBottomSheet = () => {
+        if (bottomSheetContext?.LoginBottomSheetRef) bottomSheetContext.LoginBottomSheetRef.current?.expand();
+    };
 
-    const onPressProfile = useCallback(() => {
+    const openFiltersBottomSheet = () => {
+        if (bottomSheetContext?.FiltersBottomSheetRef) bottomSheetContext.FiltersBottomSheetRef.current?.expand();
+    };
+
+    const onProfilePress = () => {
         closeTabBar(openLoginBottomSheet)();
-    }, [closeTabBar, openLoginBottomSheet]);
+    };
+
+    const onFiltersPress = () => {
+        closeTabBar(openFiltersBottomSheet)();
+    };
+
+    const onFavoritePress = () => {
+        navigation.navigate(SCREEN_NAMES.FAVORITE_SCREEN);
+    };
 
     useImperativeHandle(ref, () => ({
         openTabBar,
         closeTabBar,
     }));
 
-    const cachedContainerStyles = useMemo(() => [styles.container, animatedStyle], [animatedStyle]);
-
     return (
-        <Animated.View onLayout={setLayout} style={cachedContainerStyles}>
+        <Animated.View onLayout={setLayout} style={[styles.container, animatedStyle]}>
             <Button 
                 iconName='HeartOutline'
                 iconColor={Colors.WHITE}
                 iconSize={w(22)}
+                onPress={onFavoritePress}
             />
             <Button 
                 iconName='FilterOutline'
                 iconColor={Colors.WHITE}
                 iconSize={w(22)}
+                onPress={onFiltersPress}
             />
             <Button 
                 iconName='ProfileOutline'
                 iconColor={Colors.WHITE}
                 iconSize={w(22)}
-                onPress={onPressProfile}
+                onPress={onProfilePress}
             />
         </Animated.View>
     );
 };
 
-const TabBarForwardRef = forwardRef(TabBar);
-export { TabBarForwardRef as TabBar };
+export const TabBar = memo(forwardRef(TabBarFunc));

@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { View } from "react-native";
 import { Layout } from "../../components/Layout";
 import { useRenderCounter } from "../../hooks/useRenderCounter";
 import { Props } from "./ItemCreationScreen.props";
 
-const ItemCreationScreen: FC<Props> = ({ route, navigation }) => {
+const ItemCreationScreenFunc: FC<Props> = ({ route, navigation }) => {
     useRenderCounter('ItemCreationScreen');
 
     return (
@@ -14,4 +14,4 @@ const ItemCreationScreen: FC<Props> = ({ route, navigation }) => {
     )
 };
 
-export { ItemCreationScreen };
+export const ItemCreationScreen = memo(ItemCreationScreenFunc);

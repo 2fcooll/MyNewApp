@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { View } from "react-native";
 import { Layout } from "../../components/Layout";
 import { useRenderCounter } from "../../hooks/useRenderCounter";
 import { Props } from "./FavoriteScreen.props";
 
-const FavoriteScreen: FC<Props> = ({ route, navigation }) => {
+const FavoriteScreenFunc: FC<Props> = ({ route, navigation }) => {
     useRenderCounter('FavoriteScreen');
 
     return (
@@ -14,4 +14,4 @@ const FavoriteScreen: FC<Props> = ({ route, navigation }) => {
     );
 };
 
-export { FavoriteScreen };
+export const FavoriteScreen = memo(FavoriteScreenFunc);

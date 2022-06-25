@@ -12,13 +12,18 @@ const styles = StyleSheet.create({
         marginBottom: w(24),
     },
     sheet: {
-        marginHorizontal: w(23),
+        marginHorizontal: w(20),
     },
     sheetHandle: {
         height: 0,
     },
     sheetBackground: {
         borderRadius: w(20),
+        backgroundColor: Colors.WHITE_SMOKE,
+    },
+    content: {
+        paddingHorizontal: w(18),
+        paddingBottom: w(20),
     },
 });
 

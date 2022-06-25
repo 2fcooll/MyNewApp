@@ -1,32 +1,27 @@
-import React, { FC, useCallback, useMemo, useRef } from "react";
-import { LayoutChangeEvent, LayoutRectangle, TouchableOpacity, View } from "react-native";
+import React, { FC, memo, useMemo, useRef } from "react";
+import { ScrollView, TouchableOpacity, View } from "react-native";
+import { useLayout } from "../../hooks/useLayout";
 import { ImageCarousel } from "../ImageCarousel";
 import { List } from "../List";
-import { IListHandles } from "../List/List.props";
 import { ProductSettings } from "../ProductSettings";
 import { ProductStatistics } from "../ProductStatistics";
 import { Tags } from "../Tags";
 import { Props } from './Product.props';
 import { styles } from "./Product.styles";
 
-const Product: FC<Props> = ({ containerStyle, data, ...props }) => {
+const ProductFunc: FC<Props> = ({ containerStyle, data, ...props }) => {
+    const [layoutStatistics, setLayoutStatistics] = useLayout();
+
     const images = useMemo(() => [data.image], [data.image]);
-    const layoutStatistics = useRef<LayoutRectangle|null>(null);
-    const settingListRef = useRef<IListHandles>(null);
+    
+    const settingListRef = useRef<ScrollView>(null);
 
-    const onLayoutStatistics = useCallback((e: LayoutChangeEvent) => {
-        if (!layoutStatistics.current) 
-        {
-            layoutStatistics.current = e.nativeEvent.layout;
-        }
-    }, []);
-
-    const onPressSettings = useCallback(() => {
+    const onPressSettings = () => {
         if (settingListRef.current && layoutStatistics.current) 
         {
             settingListRef.current.scrollTo({ x: layoutStatistics.current?.width + layoutStatistics.current?.x });
         }
-    }, []);
+    }
 
     return (
         <View style={containerStyle}>
@@ -49,7 +44,7 @@ const Product: FC<Props> = ({ containerStyle, data, ...props }) => {
                 contentContainerStyle={styles.statistics}
             >
                 <ProductStatistics 
-                    onLayout={onLayoutStatistics} 
+                    onLayout={setLayoutStatistics} 
                 />
                 <ProductSettings 
                     onPressSettings={onPressSettings} 
@@ -60,4 +55,4 @@ const Product: FC<Props> = ({ containerStyle, data, ...props }) => {
     );
 };
 
-export { Product };
+export const Product = memo(ProductFunc);
